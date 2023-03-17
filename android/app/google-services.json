@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760067959172",
+    "project_id": "tigernote-91d89",
+    "storage_bucket": "tigernote-91d89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760067959172:android:f7e9924c58bf81aad655d1",
+        "android_client_info": {
+          "package_name": "com.example.tigernote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760067959172-jedf2iltqen4b44sc7tdfls4ii7fjou9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtJI9DFlhixUcIq1uL8CfuhKZnQw5KntY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760067959172-jedf2iltqen4b44sc7tdfls4ii7fjou9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
