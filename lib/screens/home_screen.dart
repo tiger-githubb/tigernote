@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tigernote/style/app_style.dart';
+import 'package:tigernote/widgets/note_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -40,13 +41,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection("notes")
-                    .snapshots(),
+                stream:
+                    FirebaseFirestore.instance.collection("Notes").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
-                      child: CircularProgressIndicator.adaptive(),
+                      child: LinearProgressIndicator(
+                        backgroundColor: Colors.grey[300],
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                      ),
                     );
                   }
                   if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
@@ -64,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (context, index) {
                       var note = snapshot.data!.docs[index];
-                      return Text(note['title']);
+                      return noteCard(() => null, note);
                     },
                   );
                 },
