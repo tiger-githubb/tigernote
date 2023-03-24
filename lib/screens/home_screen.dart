@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tigernote/screens/note_reader.dart';
 import 'package:tigernote/style/app_style.dart';
 import 'package:tigernote/widgets/note_card.dart';
 
@@ -41,39 +42,66 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream:
-                    FirebaseFirestore.instance.collection("Notes").snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                      child: LinearProgressIndicator(
-                        backgroundColor: Colors.grey[300],
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                  stream: FirebaseFirestore.instance
+                      .collection("Notes")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: LinearProgressIndicator(
+                          backgroundColor: Colors.grey[300],
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.blue),
+                        ),
+                      );
+                    }
+                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Text(
+                          "Pas de notes par ici",
+                          style: GoogleFonts.roboto(color: Colors.white),
+                        ),
+                      );
+                    }
+                    return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
                       ),
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        var note = snapshot.data!.docs[index];
+                        return noteCard(
+                          (doc) => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NoteReaderScreen(doc),
+                            ),
+                          ),
+                          note,
+                        );
+                      },
                     );
-                  }
-                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                    return Center(
-                      child: Text(
-                        "Pas de notes par ici",
-                        style: GoogleFonts.roboto(color: Colors.white),
-                      ),
-                    );
-                  }
-                  return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                    ),
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) {
-                      var note = snapshot.data!.docs[index];
-                      return noteCard(() => null, note);
-                    },
-                  );
-                },
-              ),
+                  }),
             ),
           ],
+        ),
+      ),
+
+      // add new note button
+
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: Text(
+          "Ajouter une note",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15.0,
+          ),
+        ),
+        icon: Icon(Icons.add),
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
     );
