@@ -13,10 +13,11 @@ class NoteReaderScreen extends StatefulWidget {
 class _NoteReaderScreenState extends State<NoteReaderScreen> {
   @override
   Widget build(BuildContext context) {
+    var color = widget.doc["color_id"];
     return Scaffold(
-      backgroundColor: AppStyle.cardsColor[1],
+      backgroundColor: AppStyle.cardsColor[color],
       appBar: AppBar(
-        backgroundColor: AppStyle.cardsColor[1],
+        backgroundColor: AppStyle.cardsColor[color],
         elevation: 0.0,
       ),
       body: Padding(
@@ -31,10 +32,10 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             SizedBox(
               height: 23,
             ),
-            Text(
-              widget.doc['creation_date'].toDate().toString(),
-              style: AppStyle.dateTitle,
-            ),
+          Text(
+            widget.doc["creation_date"],
+            style: AppStyle.dateTitle,
+          ),
             const SizedBox(height: 20.0),
             Text(
               widget.doc['note_content'],

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tigernote/screens/note_editor.dart';
 import 'package:tigernote/screens/note_reader.dart';
 import 'package:tigernote/style/app_style.dart';
 import 'package:tigernote/widgets/note_card.dart';
@@ -90,7 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
       // add new note button
 
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => NoteEditorScreen()));
+        },
         label: Text(
           "Ajouter une note",
           style: TextStyle(

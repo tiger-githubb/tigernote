@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tigernote/style/app_style.dart';
+import 'package:intl/intl.dart';
 
 Widget noteCard(
     Function(QueryDocumentSnapshot)? onTap, QueryDocumentSnapshot doc) {
@@ -10,7 +11,7 @@ Widget noteCard(
       padding: EdgeInsets.all(8.0),
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: AppStyle.cardsColor[1],
+        color: AppStyle.cardsColor[doc['color_id']],
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -24,13 +25,15 @@ Widget noteCard(
             height: 10,
           ),
           Text(
-            doc["creation_date"].toDate().toString(),
+            doc["creation_date"],
             style: AppStyle.dateTitle,
           ),
-                    SizedBox(
+
+          SizedBox(
             height: 12,
           ),
-          Text(doc["note_content"], style: AppStyle.mainContent, maxLines:4)
+          Text(doc["note_content"], style: AppStyle.mainContent, maxLines: 4)
+          // limit worlds to 10 ?
         ],
       ),
     ),
