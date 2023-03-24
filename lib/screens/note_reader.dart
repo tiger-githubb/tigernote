@@ -17,6 +17,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     return Scaffold(
       backgroundColor: AppStyle.cardsColor[color],
       appBar: AppBar(
+              title: Text( widget.doc['note_title'] ,style: TextStyle(color:Colors.black, fontWeight: FontWeight.w600)),
+
         backgroundColor: AppStyle.cardsColor[color],
         elevation: 0.0,
       ),
@@ -25,12 +27,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.doc['note_title'],
-              style: AppStyle.mainTitle,
-            ),
             SizedBox(
-              height: 23,
+              height: 5,
             ),
           Text(
             widget.doc["creation_date"],

@@ -35,6 +35,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
           children: [
             TextField(
               controller: _TitleController,
+              autofocus: true,
               decoration: InputDecoration(border: InputBorder.none,
               hintText:'Le Titre de la note'
               ),

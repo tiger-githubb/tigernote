@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tigernote/style/app_style.dart';
 import 'package:intl/intl.dart';
 
+import '../screens/home_screen.dart';
+
 Widget noteCard(
     Function(QueryDocumentSnapshot)? onTap, QueryDocumentSnapshot doc) {
   return InkWell(
@@ -27,13 +29,21 @@ Widget noteCard(
           Text(
             doc["creation_date"],
             style: AppStyle.dateTitle,
+            maxLines: 1,
           ),
 
-          SizedBox(
-            height: 12,
+          Text(doc["note_content"], style: AppStyle.mainContent, maxLines: 2),
+
+          // Add delete button
+          Row(
+           mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () => deleteNote(doc.id),
+                ),
+              ],
           ),
-          Text(doc["note_content"], style: AppStyle.mainContent, maxLines: 4)
-          // limit worlds to 10 ?
         ],
       ),
     ),

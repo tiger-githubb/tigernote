@@ -19,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppStyle.mainColor,
       appBar: AppBar(
-        elevation: 0.0,
-        title: const Text('Tiger Note'),
+        elevation: 4.0,
+        title: const Text('Tiger Note' ,style: TextStyle(color:Colors.white , fontWeight: FontWeight.w600)),
         centerTitle: true,
         backgroundColor: AppStyle.mainColor,
       ),
@@ -64,10 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     }
-                    return GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                      ),
+                    return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         var note = snapshot.data!.docs[index];
@@ -109,4 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+void deleteNote(String id) async {
+  await FirebaseFirestore.instance.collection('Notes').doc(id).delete();
 }
