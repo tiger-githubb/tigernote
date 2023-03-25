@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         icon: Icon(Icons.add),
-        backgroundColor: Colors.blue,
+        
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),

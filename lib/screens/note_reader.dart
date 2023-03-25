@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:tigernote/screens/note_editor.dart';
+import 'package:tigernote/screens/note_update.dart';
 import 'package:tigernote/style/app_style.dart';
 
 class NoteReaderScreen extends StatefulWidget {
@@ -41,6 +43,26 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NoteUpdateScreen(
+                doc: widget.doc,
+              ),
+            ),
+          );
+        },
+        label: Text(
+          'Modifier',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15.0,
+          ),
+        ),
+        icon: Icon(Icons.edit),
       ),
     );
   }
