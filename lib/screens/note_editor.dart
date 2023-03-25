@@ -13,6 +13,9 @@ class NoteEditorScreen extends StatefulWidget {
 }
 
 class _NoteEditorScreenState extends State<NoteEditorScreen> {
+  final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
+
   int color_id = Random().nextInt(AppStyle.cardsColor.length);
 
   TextEditingController _TitleController = TextEditingController();
@@ -22,6 +25,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldMessengerKey,
       backgroundColor: AppStyle.cardsColor[color_id],
       appBar: AppBar(
         backgroundColor: AppStyle.cardsColor[color_id],
