@@ -10,6 +10,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: LinearProgressIndicator(
                           backgroundColor: Colors.grey[300],
                           valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.blue),
+                              const AlwaysStoppedAnimation<Color>(Colors.blue),
                         ),
                       );
                     }
@@ -65,10 +66,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     }
                     return ListView.builder(
+                      
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         var note = snapshot.data!.docs[index];
                         return noteCard(
+
                           (doc) => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -89,16 +92,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => NoteEditorScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const NoteEditorScreen()));
+          
         },
-        label: Text(
+        label: const Text(
           "Ajouter une note",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15.0,
           ),
         ),
-        icon: Icon(Icons.add),
+        icon: const Icon(Icons.add),
         
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),

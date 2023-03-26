@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppStyle {
-  static Color bgColor = Color(0xFFe2e2ff);
-  static Color mainColor = Color(0xFF000633);
-  static Color accentColor = Color(0x0ff006ff);
+  static Color bgColor = const Color(0xFFe2e2ff);
+  static Color mainColor = const Color.fromARGB(255, 0, 0, 0);
+  static Color accentColor = const Color(0x0ff006ff);
 
   static List<Color> cardsColor = [
+
     Colors.white,
     Colors.red.shade200,
     Colors.pink.shade200,
@@ -25,6 +26,7 @@ class AppStyle {
     Colors.cyan.shade200,
     Colors.deepOrange.shade200,
     Colors.brown.shade200,
+    
   ];
 
   static TextStyle mainTitle =

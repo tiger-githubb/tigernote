@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tigernote/screens/note_editor.dart';
 import 'package:tigernote/screens/note_update.dart';
 import 'package:tigernote/style/app_style.dart';
 
@@ -19,7 +18,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     return Scaffold(
       backgroundColor: AppStyle.cardsColor[color],
       appBar: AppBar(
-              title: Text( widget.doc['note_title'] ,style: TextStyle(color:Colors.black, fontWeight: FontWeight.w600)),
+              title: Text( widget.doc['note_title'] ,style: const TextStyle(color:Colors.black, fontWeight: FontWeight.w600)),
 
         backgroundColor: AppStyle.cardsColor[color],
         elevation: 0.0,
@@ -29,7 +28,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
           Text(
@@ -55,14 +54,14 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             ),
           );
         },
-        label: Text(
+        label: const Text(
           'Modifier',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15.0,
           ),
         ),
-        icon: Icon(Icons.edit),
+        icon: const Icon(Icons.edit),
       ),
     );
   }

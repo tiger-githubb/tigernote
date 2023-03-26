@@ -38,6 +38,7 @@ dependencies:
   firebase_core: ^2.8.0
   google_fonts: ^4.0.3
   cloud_firestore: ^4.4.5
+  flutter_native_splash: ^2.2.5
   intl: ^0.18.0
 
 dev_dependencies:
@@ -61,6 +62,27 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+   # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+  #   - images/a_dot_ham.jpeg
+
+
+# for the splash screen
+
+flutter_native_splash:
+  color: "#E1EBE3"
+  image: assets/images/logo.png
+  android_disable_fullscreen: true
+  color_dark: "#121212"
+
+  android_12:
+    image: assets/images/logo.png
+    icon_background_color: "#E1EBE3"
+    android_disable_fullscreen: true
+    color_dark: "#121212"
+ 
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -92,3 +114,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

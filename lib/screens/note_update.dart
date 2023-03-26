@@ -1,8 +1,6 @@
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:tigernote/screens/home_screen.dart';
 import 'package:tigernote/style/app_style.dart';
 
@@ -89,8 +87,9 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
               'note_title': _titleController.text,
               'note_content': _contentController.text,
             });
+            // ignore: use_build_context_synchronously
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                context, MaterialPageRoute(builder: (context) => const HomeScreen()));
           }
         },
         label: const Text(
